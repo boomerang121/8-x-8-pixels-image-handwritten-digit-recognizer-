@@ -1,62 +1,35 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
+ 
 
 from sklearn import datasets
 import matplotlib.pyplot as plt
 import numpy as np
-
-
-# In[2]:
-
+ 
 
 digits = datasets.load_digits()
 
 
-# In[3]:
-
+ 
 
 fig = plt.figure()
 plt.imshow(digits.images[23],cmap = plt.cm.gray_r)
 txt = "This is %d"%digits.target[23]
 fig.text(0.1,0.1,txt)
 plt.show()
-
-
-# In[4]:
-
-
+ 
 digits.images[23]
-
-
-# In[5]:
-
-
+ 
 x = 100 #length of training data set
 X_train = digits.data[0:x]
 Y_train = digits.target[0:x]
 
-
-# In[7]:
-
-
+ 
 pred = 813
 X_test = digits.data[pred]
 print("X_test's real value is %d"%digits.target[pred])
-
-
-# In[8]:
-
-
+ 
 def dist(x,y):
  return np.sqrt(np.sum((x-y)**2))
-
-
-# In[10]:
-
-
+ 
 l = len(X_train)
 distance = np.zeros(l) 
 for i in range(l):
@@ -64,11 +37,7 @@ for i in range(l):
 min_index = np.argmin(distance)
 print("Preditcted value is ",)
 print(Y_train[min_index])
-
-
-# In[11]:
-
-
+ 
 l = len(X_train)
 no_err = 0
 distance = np.zeros(l)
@@ -80,32 +49,15 @@ for j in range(1697,1797):
  if Y_train[min_index] != digits.target[j]:
   no_err+=1
 print ("Total errors for train length = %d is %d"%(x,no_err))
-
-
-# In[13]:
-
-
+ 
 #  Our testing data set has 100 examples. 
 #  In the for loop it predicts the number for image at j index and 
 # compares it with its actual value and then prints the total number of errors. 
 # When x = 100 14/100 values are wrongly predicted and for x = 1696 2/100 values are wrongly predicted. 
 # So our model predicts images with 98% accuracy.
 
-
-# In[14]:
-
+ 
 
 
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
+ 
 
